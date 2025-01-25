@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+    <title>Retro Game FJU</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1 class="press-start"><a href="https://joseph2reis.github.io/jogo-da-memoria">FJU Retro Game</a></h1>
+        </div>
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">INICIO</a></li>
+                    <li><a href="#">SCORE</a></li>
+                    <li><a href="../pages/game.html">GAME</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container-info">
+            <div class="turn-player">
+                <h2>Vez de:</h2>
+                <span class="turn-tribo"></span>
+            </div>
+            <div class="time-container">
+                <h2>Time ⏱️</h2>
+                <div>
+                    <span class="time">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="container-card"></div>
+        <aside>
+
+            <div class="score">
+
+                <div class="tribos-score">
+                    <div>
+                        <h3 id="player1" class="player1"></h3>
+                        <span id="player1" class="score1">0</span><span> pts</span>
+                    </div>
+                    <div>
+                        <h3 class="player2"></h3>
+                        <span class="score2">0</span><span> pts</span>
+                    </div>
+                    <div class="player3-container">
+                        <h3 class="player3"></h3>
+                        <span class="score3">0</span><span> pts</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <div class="winner hidden">
+            <div>
+                <h1>Tribo Vencedora</h1>
+                <div class="border-img">
+                    <img class="winner-img" src="../assets/aser.jpg" alt="">
+                </div>
+                <button class="exit">Exit</button>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="../js/main.js"></script>
+
+</html>

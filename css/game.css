@@ -1,0 +1,460 @@
+/* Reset básico para todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do fundo da página */
+body {
+    background-image: url(../assets/universal.png);
+    background-size: 250px;
+    background-color: #0000004f;
+}
+
+/* Cabeçalho fixo com navegação */
+header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    background: #dddcdcd7;
+    padding: 20px;
+    position: fixed;
+
+    h1 {
+        color: #0f0f4e;
+        text-shadow: #333 2px 2px 3px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #0f0f4e;
+    }
+}
+
+/* Estilo da navegação principal */
+nav ul {
+    display: flex;
+    gap: 2em;
+    margin: 0 50px;
+
+    li {
+        display: flex;
+
+        a {
+            text-decoration: none;
+            text-shadow: #000000 1px 1px 3px;
+            font-size: large;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: #0f0f4e;
+        }
+
+    }
+}
+
+/* Container principal centralizado */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-right: 200px;
+}
+
+/* Classe para fonte Press Start 2P */
+.press-start {
+    font-family: "Press Start 2P", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+
+/* Grid de cartas do jogo da memória */
+.container-card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: 38%;
+    gap: .5em;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    margin: 0 1em;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+/* Estilo base para as cartas */
+.card {
+    cursor: pointer;
+    position: relative;
+    aspect-ratio: 3/4;
+    width: 100%;
+    border-radius: 5px;
+    transition: all 400ms ease;
+    transform-style: preserve-3d;
+}
+
+/* Classe para revelar carta (rotação) */
+.reveal-card {
+    transform: rotateY(180deg);
+}
+
+/* Estilos comuns para frente e verso das cartas */
+.face {
+    width: 101%;
+    height: 100%;
+    border-radius: 5px;
+    position: absolute;
+    background-position: center;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Frente da carta (imagem do personagem) */
+.front {
+    background-size: cover;
+    background-position-y: -40px;
+    background-repeat: no-repeat;
+}
+
+/* Verso da carta (padrão) */
+.back {
+    background-image: url(../assets/frente.png);
+    background-color: #0f0f4e;
+    background-size: contain;
+    backface-visibility: hidden;
+}
+
+/* Container do cronômetro */
+.time-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 200px;
+    height: 80px;
+    background-color: white;
+    border-radius: 5px;
+    font-family: 'Poppins';
+
+    h2 {
+        font-size: x-large;
+    }
+
+    span {
+        font-family: "Press Start 2P", serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: large;
+        color: #970000;
+    }
+
+}
+
+/* Indicador do jogador atual */
+.turn-player {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 200px;
+    height: 80px;
+    background-color: white;
+    border-radius: 5px;
+    font-family: 'Poppins';
+
+    span {
+        font-family: "Press Start 2P", serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: large;
+        color: #970000;
+        text-transform: uppercase;
+    }
+}
+
+/* Modal de vitória */
+.winner {
+    transition: all 500ms ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    border: #33333360 solid 2px;
+    box-sizing: border-box;
+    box-shadow: #000000 5px 5px 10px;
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    z-index: 1;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.884);
+    border-radius: 25px;
+
+    h1 {
+        text-align: center;
+        margin-top: 18px;
+        font-family: 'Poppins';
+        font-size: x-large;
+        color: #333333;
+        text-shadow: #000000 1px 2px px;
+        animation: jump 3s ease-in-out infinite;
+    }
+
+    .border-img {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        border-radius: 999999%;
+        background-color: aliceblue;
+        margin: 10px auto;
+        overflow: hidden;
+        animation: jump 3s ease-in-out infinite;
+
+        img {
+            width: 260px;
+            position: absolute;
+            top: 50%;
+            transform: translatey(-50%);
+            right: -7px;
+        }
+
+    }
+
+    button {
+        padding: 10px 50px;
+        background-color: #18186d;
+        color: white;
+        border-radius: 25px;
+        border: none;
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+
+}
+
+/* Placar do jogo */
+.score {
+    background-color: white;
+    margin-right: 10px;
+    width: 200px;
+    border-radius: 5px;
+    padding: .2em 1em;
+
+    h1 {
+        margin: 10px 0;
+        text-align: center;
+        font-size: xx-large;
+        font-family: 'Poppins';
+        letter-spacing: 2px;
+    }
+
+}
+
+/* Classe utilitária para esconder elementos */
+.hidden {
+    display: none;
+}
+
+/* Placar das tribos */
+.tribos-score {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-left: 15px;
+    font-family: 'Poppins';
+    letter-spacing: 1.5px;
+
+    span {
+        font-size: large;
+        color: #970000;
+        font-family: "Press Start 2P", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+}
+
+/* Números decorativos nas cartas */
+.number,
+.number2 {
+    color: white;
+    position: absolute;
+    font-size: x-large;
+
+}
+
+.number {
+    top: 5px;
+    left: 10px;
+}
+
+.number2 {
+    bottom: 5px;
+    right: 10px;
+}
+
+/* Animação para cartas corretas */
+.animation-correct-cards {
+    /*chama a animação para cartas corretas */
+    animation: correctCards 2s forwards;
+    opacity: .5;
+}
+
+/* Animação de entrada das cartas */
+.appear-cards {
+    /* chama a animação para aparecer as cartas ao iniciar jogo novo */
+    animation: appearCards 3s forwards;
+}
+
+/* Definições das animações */
+@keyframes jump {
+
+    /* animação que faz o efeito da imagem estar pulando */
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes correctCards {
+
+    /* animação para cartas corretas */
+    0% {
+
+        transform: scale(1) rotateY(0deg);
+        opacity: 1;
+
+    }
+
+    50% {
+
+        transform: scale(1.05);
+        opacity: 1;
+
+
+    }
+
+    75% {
+        transform: scale(1) rotateY(180deg);
+        opacity: 1;
+
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes appearCards {
+
+    /* animação para aparecer as cartas ao iniciar jogo novo */
+
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsividade para dispositivos móveis */
+@media screen and (max-width: 430px) {
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 0;
+
+        h1 {
+            font-size: 1.5em;
+        }
+
+        nav {
+            display: none;
+        }
+    }
+
+    aside {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-info {
+        width: 95%;
+        display: flex;
+        align-items: center;
+        gap: .5em;
+    }
+
+    .score {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 auto;
+
+        h1 {
+            font-size: larger;
+            margin: 0;
+        }
+    }
+
+    .tribos-score {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: center;
+        gap: 40px;
+        margin: 0;
+        padding: 0 5px;
+
+        h3 {
+            font-size: medium;
+            margin: 5px 0;
+        }
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .container-card {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 95%;
+        margin: .5em 0;
+        padding: 10px;
+        background-color: rgba(179, 179, 179, 0.986);
+    }
+
+    .front {
+        background-position: 0 -25px;
+    }
+
+    body {
+        background-size: 100px;
+    }
+
+}
