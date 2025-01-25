@@ -244,8 +244,7 @@ const loadGame = () => {
 
     copiaProjetos = [...projetos, ...projetos];
     containerCard.classList.add("appear-cards");
-    const ramdoCards = copiaProjetos.sort();
-    // () => Math.random() - 0.5
+    const ramdoCards = copiaProjetos.sort(() => Math.random() - 0.5);
     ramdoCards.forEach((projeto, numero) => {
         const card = createCard(projeto, numero);
         containerCard.appendChild(card)
